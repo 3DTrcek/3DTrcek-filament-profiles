@@ -39,6 +39,8 @@ body:
 
         **2. Fill in the form and drag the file into the box at the bottom.**
 
+        > 🛡️ Every attachment is scanned automatically. Files that aren't plain slicer exports are removed.
+
   - type: dropdown
     id: slicer
     attributes:

@@ -1,0 +1,36 @@
+name: Safety guard
+
+# Scans files and links that people outside the team post in issues and comments.
+
+on:
+  issues:
+    types: [opened, edited]
+  issue_comment:
+    types: [created, edited]
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: guard-${{ github.event.issue.number }}-${{ github.event.comment.id || 'issue' }}
+  cancel-in-progress: true
+
+jobs:
+  guard:
+    if: >-
+      github.event.sender.type != 'Bot' &&
+      !contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'),
+                github.event.comment.author_association || github.event.issue.author_association)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scan attachments and links
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/guard.py
