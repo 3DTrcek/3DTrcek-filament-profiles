@@ -149,25 +149,24 @@ body:
   - type: textarea
     id: settings
     attributes:
-      label: Key settings
-      description: Whatever you tuned
-      value: |
-        Nozzle temp:
-        Bed temp:
-        Max volumetric speed:
-        Flow ratio:
-        Pressure advance / K:
-        Cooling fan:
+      label: Key settings (optional)
+      description: Whatever you tuned – helps others understand your profile
+      placeholder: |
+        Nozzle temp: 245 °C
+        Bed temp: 80 °C
+        Max volumetric speed: 12 mm³/s
+        Flow ratio: 0.96
+        Pressure advance / K: 0.04
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: results
     attributes:
-      label: Test results and notes
+      label: Notes (optional)
       description: What did you print, how did it come out? Printer mods (enclosure, hotend…)? Photos are very welcome.
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: file
