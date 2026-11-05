@@ -1,0 +1,96 @@
+name: Submit a filament profile
+description: Share your slicer profile for a 3DTrček filament — no Git needed.
+title: "[Profile] <Material> on <Printer>"
+labels: ["profile-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing! Fill in what you can — the more detail, the more useful your profile is for others.
+        Export it from your slicer with **File → Export → Export Configs…** (Bambu Studio / OrcaSlicer) and drag the file into the box at the bottom.
+
+  - type: input
+    id: material
+    attributes:
+      label: 3DTrček filament
+      description: Material and colour as on 3dtrcek.com
+      placeholder: "PETG Mat, Graphite Black"
+    validations:
+      required: true
+
+  - type: input
+    id: printer
+    attributes:
+      label: Printer model
+      placeholder: "Prusa MK4S"
+    validations:
+      required: true
+
+  - type: input
+    id: nozzle
+    attributes:
+      label: Nozzle
+      placeholder: "0.4 mm brass / 0.6 mm hardened steel high-flow"
+    validations:
+      required: true
+
+  - type: input
+    id: mods
+    attributes:
+      label: Printer mods
+      description: Enclosure, hotend, firmware, anything non-stock
+      placeholder: "Stock / enclosed / Revo hotend…"
+
+  - type: input
+    id: slicer
+    attributes:
+      label: Slicer and version
+      placeholder: "OrcaSlicer 2.3.1"
+    validations:
+      required: true
+
+  - type: textarea
+    id: settings
+    attributes:
+      label: Key settings
+      description: Whatever you tuned
+      value: |
+        Nozzle temp:
+        Bed temp:
+        Max volumetric speed:
+        Flow ratio:
+        Pressure advance / K:
+        Cooling fan:
+    validations:
+      required: true
+
+  - type: textarea
+    id: results
+    attributes:
+      label: Test results
+      description: What did you print, how did it come out? Photos are very welcome — drag them in.
+    validations:
+      required: true
+
+  - type: textarea
+    id: file
+    attributes:
+      label: Profile file
+      description: Drag and drop your exported .json (or .ini) here. If GitHub refuses the file type, zip it first.
+    validations:
+      required: true
+
+  - type: input
+    id: credit
+    attributes:
+      label: Credit name
+      description: Name or nickname to use in the file name (leave empty to use your GitHub username)
+      placeholder: "janez"
+
+  - type: checkboxes
+    id: license
+    attributes:
+      label: License
+      options:
+        - label: I made this profile and agree to share it under CC BY 4.0.
+          required: true

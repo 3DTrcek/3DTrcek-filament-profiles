@@ -1,0 +1,44 @@
+name: Validate profiles
+
+on:
+  pull_request:
+    paths: ["official/**", "community/**"]
+  push:
+    branches: [main]
+    paths: ["official/**", "community/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check changed profiles (pull request)
+        if: github.event_name == 'pull_request'
+        run: |
+          git diff --name-only --diff-filter=AMR origin/${{ github.base_ref }}...HEAD \
+            -- official community > changed.txt
+          cat changed.txt
+          if [ -s changed.txt ]; then
+            # PRs from outside the team may only touch community/
+            if [ "${{ github.event.pull_request.author_association }}" = "OWNER" ] || \
+               [ "${{ github.event.pull_request.author_association }}" = "MEMBER" ] || \
+               [ "${{ github.event.pull_request.author_association }}" = "COLLABORATOR" ]; then
+              xargs -a changed.txt python scripts/validate_profiles.py
+            else
+              xargs -a changed.txt python scripts/validate_profiles.py --community-only
+            fi
+          fi
+
+      - name: Check all profiles (main)
+        if: github.event_name == 'push'
+        run: python scripts/validate_profiles.py
