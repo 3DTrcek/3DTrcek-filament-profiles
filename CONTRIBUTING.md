@@ -4,8 +4,17 @@ Thanks for helping grow the library! A good profile saves other people hours of 
 
 ## What we accept
 
-- Profiles for **3DTrček filaments only** (any material from 3dtrcek.com).
-- Exported slicer presets: **`.json`** from Bambu Studio or OrcaSlicer. PrusaSlicer / SuperSlicer users can submit an exported **`.ini`**.
+- Profiles for **3DTrcek filaments only** (any material from 3dtrcek.com).
+- Exported filament presets from any slicer:
+
+  | Slicer | File |
+  |---|---|
+  | Bambu Studio, OrcaSlicer, Creality Print, QIDI Studio, ElegooSlicer, Anycubic Slicer Next | `.json` |
+  | PrusaSlicer, SuperSlicer | `.ini` |
+  | UltiMaker Cura | `.curaprofile` |
+  | Simplify3D | `.fff` |
+
+  Using a slicer that's not listed (FlashPrint, ideaMaker…)? Submit it through the form anyway and we'll work out the format with you.
 - One profile = one material + one printer + one nozzle size.
 - Profiles you have **actually printed with** — at least a calibration cube and one real part.
 
@@ -55,10 +64,10 @@ When you open a PR, the template asks for:
 Every PR is checked automatically for:
 - valid JSON (for `.json` files)
 - correct file name
-- correct folder (`community/…` — the `official/` folder is maintained by 3DTrček only)
+- correct folder (`community/…` — the `official/` folder is maintained by 3DTrcek only)
 
 If a check fails, the PR page tells you what to fix.
 
 ## Review
 
-A 3DTrček team member reviews every submission, usually within a week. We may ask a question or rename the file. Once merged, you're credited in the file name and in the commit history.
+A 3DTrcek team member reviews every submission, usually within a week. We may ask a question or rename the file. Once merged, you're credited in the file name and in the commit history.

@@ -1,13 +1,13 @@
-# 3DTrček Filament Profiles
+# 3DTrcek Filament Profiles
 
-Slicer profiles for **[3DTrček](https://3dtrcek.com)** filaments — made in Europe, compounded, extruded and spooled in-house in Ljubljana, Slovenia.
+Slicer profiles for **[3DTrcek](https://3dtrcek.com)** filaments — made in Europe, compounded, extruded and spooled in-house in Ljubljana, Slovenia.
 
 This library has two parts:
 
 | Folder | Who makes it | What it means |
 |---|---|---|
-| [`official/`](official/) | 3DTrček team | Tuned and tested by us on our own printers. Start here if your printer is listed. |
-| [`community/`](community/) | 3DTrček users | Shared by customers for printers we don't run ourselves. Tested by the person who submitted it — check the notes in each folder. |
+| [`official/`](official/) | 3DTrcek team | Tuned and tested by us on our own printers. Start here if your printer is listed. |
+| [`community/`](community/) | 3DTrcek users | Shared by customers for printers we don't run ourselves. Tested by the person who submitted it — check the notes in each folder. |
 
 **Got a printer we don't cover? Share your profile** — see [How to contribute](#how-to-contribute). Every profile you add helps the next person print right the first time.
 
@@ -41,6 +41,15 @@ Browse [`community/`](community/) by printer brand. Each profile is named so you
 
 > **Tip:** Profiles that start with `inherits` are based on a system preset (e.g. *Generic PLA*). Your slicer needs that base preset installed for the printer — it is by default for supported printers.
 
+### Creality Print / QIDI Studio / ElegooSlicer / Anycubic Slicer Next
+These are based on OrcaSlicer — use **File → Import → Import Configs…** and pick the `.json` file.
+
+### PrusaSlicer / SuperSlicer
+**File → Import → Import Config…** and pick the `.ini` file. The filament preset appears in the Filament tab.
+
+### UltiMaker Cura
+**Preferences → Configure Cura → Profiles → Import** and pick the `.curaprofile` file.
+
 ### Download everything at once
 Click the green **Code → Download ZIP** button at the top of this page.
 
@@ -63,13 +72,15 @@ You don't need to know Git. Pick whichever way is easier:
 Full rules: **[CONTRIBUTING.md](CONTRIBUTING.md)**
 
 ### How to export your profile
-- **Bambu Studio / OrcaSlicer:** select your filament preset → **File → Export → Export Configs…** → tick only your filament preset → save the `.json`.
+- **Bambu Studio / OrcaSlicer and Orca-based slicers:** select your filament preset → **File → Export → Export Configs…** → tick only your filament preset → save the `.json`.
+- **PrusaSlicer / SuperSlicer:** **File → Export → Export Config…** → save the `.ini`.
+- **UltiMaker Cura:** **Preferences → Configure Cura → Profiles** → select your profile → **Export**.
 
 ---
 
 ## Disclaimer
 
-Profiles are a starting point. Printers, nozzles, enclosures and room conditions differ — always run a temperature tower and flow test for best results. Community profiles are shared by users and are not tested by 3DTrček unless marked otherwise.
+Profiles are a starting point. Printers, nozzles, enclosures and room conditions differ — always run a temperature tower and flow test for best results. Community profiles are shared by users and are not tested by 3DTrcek unless marked otherwise.
 
 Questions about a material? Every product page on [3dtrcek.com](https://3dtrcek.com) has the technical data sheet, or contact us at info@3dtrcek.com.
 

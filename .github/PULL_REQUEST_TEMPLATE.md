@@ -1,6 +1,6 @@
 ## New / updated profile
 
-**3DTrček filament:** <!-- e.g. PETG Mat, Graphite Black -->
+**3DTrcek filament:** <!-- e.g. PETG Mat, Graphite Black -->
 **Printer:** <!-- e.g. Prusa MK4S -->
 **Nozzle:** <!-- e.g. 0.4 mm brass -->
 **Mods:** <!-- stock / enclosure / hotend swap… -->

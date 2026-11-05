@@ -1,5 +1,5 @@
 name: Submit a filament profile
-description: Share your slicer profile for a 3DTrček filament — no Git needed.
+description: Share your slicer profile for a 3DTrcek filament — no Git needed.
 title: "[Profile] <Material> on <Printer>"
 labels: ["profile-submission"]
 body:
@@ -12,7 +12,7 @@ body:
   - type: input
     id: material
     attributes:
-      label: 3DTrček filament
+      label: 3DTrcek filament
       description: Material and colour as on 3dtrcek.com
       placeholder: "PETG Mat, Graphite Black"
     validations:
@@ -76,7 +76,7 @@ body:
     id: file
     attributes:
       label: Profile file
-      description: Drag and drop your exported .json (or .ini) here. If GitHub refuses the file type, zip it first.
+      description: Drag and drop your exported profile here (.json, .ini, .curaprofile…). If GitHub refuses the file type, zip it first.
     validations:
       required: true
 

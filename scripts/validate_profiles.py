@@ -12,12 +12,12 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PROFILE_EXT = {".json", ".ini"}
+PROFILE_EXT = {".json", ".ini", ".curaprofile", ".fff"}
 MAX_SIZE = 512 * 1024  # 512 KB is far above any real preset
 
 PART = r"[A-Za-z0-9.]+(?:-[A-Za-z0-9.]+)*"
-OFFICIAL_RE = re.compile(rf"^3DTrcek_{PART}_{PART}_\d+(?:\.\d+)?(?:-[A-Za-z]+)*\.(json|ini)$")
-COMMUNITY_RE = re.compile(rf"^3DTrcek_{PART}_{PART}_\d+(?:\.\d+)?(?:-[A-Za-z]+)*_by-{PART}\.(json|ini)$")
+OFFICIAL_RE = re.compile(rf"^3DTrcek_{PART}_{PART}_\d+(?:\.\d+)?(?:-[A-Za-z]+)*\.(json|ini|curaprofile|fff)$")
+COMMUNITY_RE = re.compile(rf"^3DTrcek_{PART}_{PART}_\d+(?:\.\d+)?(?:-[A-Za-z]+)*_by-{PART}\.(json|ini|curaprofile|fff)$")
 
 FILAMENT_KEYS = {
     "nozzle_temperature", "filament_type", "inherits", "filament_settings_id",
@@ -34,17 +34,17 @@ def check(path: Path, community_only: bool) -> list[str]:
         return []  # not a profile location
     if path.suffix not in PROFILE_EXT:
         if path.name != ".gitkeep" and path.name.lower() != "readme.md":
-            errors.append(f"{rel}: unsupported file type (use .json or .ini)")
+            errors.append(f"{rel}: unsupported file type (use .json, .ini, .curaprofile or .fff)")
         return errors
     if community_only and top == "official":
-        errors.append(f"{rel}: the official/ folder is maintained by 3DTrček — put your profile in community/")
+        errors.append(f"{rel}: the official/ folder is maintained by 3DTrcek — put your profile in community/")
     if rel.count("/") < 2:
         errors.append(f"{rel}: put the file in a brand/model folder, e.g. community/prusa/MK4S/")
 
     pattern = OFFICIAL_RE if top == "official" else COMMUNITY_RE
     if not pattern.match(path.name):
-        expected = ("3DTrcek_<Material>_<Printer>_<Nozzle>.json" if top == "official"
-                    else "3DTrcek_<Material>_<Printer>_<Nozzle>_by-<Name>.json")
+        expected = ("3DTrcek_<Material>_<Printer>_<Nozzle>.<ext>" if top == "official"
+                    else "3DTrcek_<Material>_<Printer>_<Nozzle>_by-<Name>.<ext>")
         errors.append(f"{rel}: file name should look like {expected} (no spaces or brackets)")
 
     if path.stat().st_size > MAX_SIZE:

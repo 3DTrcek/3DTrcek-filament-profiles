@@ -1,6 +1,6 @@
-# Official 3DTrček profiles
+# Official 3DTrcek profiles
 
-Tuned and tested by the 3DTrček team on our own printers.
+Tuned and tested by the 3DTrcek team on our own printers.
 
 | Folder | Printers |
 |---|---|
