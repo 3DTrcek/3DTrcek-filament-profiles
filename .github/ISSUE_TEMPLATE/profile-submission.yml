@@ -1,53 +1,120 @@
 name: Submit a filament profile
-description: Share your slicer profile for a 3DTrcek filament — no Git needed.
-title: "[Profile] <Material> on <Printer>"
+description: Share your slicer profile for a 3DTrcek filament – no Git needed.
+title: "[Profile] <Material> on <Printer> (<Slicer>)"
 labels: ["profile-submission"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for sharing! Fill in what you can — the more detail, the more useful your profile is for others.
-        Export it from your slicer with **File → Export → Export Configs…** (Bambu Studio / OrcaSlicer) and drag the file into the box at the bottom.
+        Thanks for sharing! It takes about two minutes.
+        **Export your filament preset** from the slicer (see the [guide](https://github.com/3DTrcek/3DTrcek-filament-profiles#how-to-export-your-profile)) and drag the file into the box at the bottom.
 
-  - type: input
-    id: material
-    attributes:
-      label: 3DTrcek filament
-      description: Material and colour as on 3dtrcek.com
-      placeholder: "PETG Mat, Graphite Black"
-    validations:
-      required: true
-
-  - type: input
-    id: printer
-    attributes:
-      label: Printer model
-      placeholder: "Prusa MK4S"
-    validations:
-      required: true
-
-  - type: input
-    id: nozzle
-    attributes:
-      label: Nozzle
-      placeholder: "0.4 mm brass / 0.6 mm hardened steel high-flow"
-    validations:
-      required: true
-
-  - type: input
-    id: mods
-    attributes:
-      label: Printer mods
-      description: Enclosure, hotend, firmware, anything non-stock
-      placeholder: "Stock / enclosed / Revo hotend…"
-
-  - type: input
+  - type: dropdown
     id: slicer
     attributes:
-      label: Slicer and version
-      placeholder: "OrcaSlicer 2.3.1"
+      label: Slicer
+      options:
+        - Bambu Studio
+        - OrcaSlicer
+        - PrusaSlicer
+        - UltiMaker Cura
+        - Creality Print
+        - QIDI Studio
+        - ElegooSlicer
+        - Anycubic Slicer Next
+        - SuperSlicer
+        - FlashPrint
+        - Simplify3D
+        - ideaMaker
+        - Other (write in notes)
     validations:
       required: true
+
+  - type: input
+    id: slicer_version
+    attributes:
+      label: Slicer version
+      placeholder: "2.3.1"
+
+  - type: dropdown
+    id: brand
+    attributes:
+      label: Printer brand
+      options:
+        - Bambu Lab
+        - Prusa
+        - Creality
+        - Elegoo
+        - Anycubic
+        - QIDI
+        - Flashforge
+        - Sovol
+        - Artillery
+        - Anker / AnkerMake
+        - Snapmaker
+        - UltiMaker
+        - Raise3D
+        - Voron / RatRig / DIY
+        - Other (write model below)
+    validations:
+      required: true
+
+  - type: input
+    id: model
+    attributes:
+      label: Printer model
+      description: Exact model, as printed on the printer
+      placeholder: "MK4S / Ender-3 V3 / K1 Max / Neptune 4 Pro"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: family
+    attributes:
+      label: Material type
+      options:
+        - PLA
+        - PETG
+        - PCTG
+        - ASA
+        - ABS
+        - TPU
+        - PA (Nylon)
+        - PC
+        - PP
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: product
+    attributes:
+      label: 3DTrcek product name
+      description: As written on the spool or in the shop – anything goes, new materials included.
+      placeholder: "PETG Mat, PLA Mat HS, ASA-CF, TPU 95A…"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: nozzle
+    attributes:
+      label: Nozzle diameter
+      options:
+        - "0.4 mm"
+        - "0.2 mm"
+        - "0.6 mm"
+        - "0.8 mm"
+        - "Other (write in notes)"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: nozzle_type
+    attributes:
+      label: Nozzle type
+      options:
+        - label: High-flow nozzle
+        - label: Hardened steel / abrasive-ready
 
   - type: textarea
     id: settings
@@ -67,8 +134,8 @@ body:
   - type: textarea
     id: results
     attributes:
-      label: Test results
-      description: What did you print, how did it come out? Photos are very welcome — drag them in.
+      label: Test results and notes
+      description: What did you print, how did it come out? Printer mods (enclosure, hotend…)? Photos are very welcome.
     validations:
       required: true
 
@@ -76,7 +143,7 @@ body:
     id: file
     attributes:
       label: Profile file
-      description: Drag and drop your exported profile here (.json, .ini, .curaprofile…). If GitHub refuses the file type, zip it first.
+      description: Drag and drop your exported profile here. If GitHub refuses the file type, zip it first.
     validations:
       required: true
 
@@ -84,7 +151,7 @@ body:
     id: credit
     attributes:
       label: Credit name
-      description: Name or nickname to use in the file name (leave empty to use your GitHub username)
+      description: Name or nickname for the file name (leave empty to use your GitHub username)
       placeholder: "janez"
 
   - type: checkboxes

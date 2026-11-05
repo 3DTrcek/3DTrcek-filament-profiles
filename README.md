@@ -2,34 +2,23 @@
 
 Slicer profiles for **[3DTrcek](https://3dtrcek.com)** filaments — made in Europe, compounded, extruded and spooled in-house in Ljubljana, Slovenia.
 
-This library has two parts:
+## 🔎 Find your profile
 
-| Folder | Who makes it | What it means |
-|---|---|---|
-| [`official/`](official/) | 3DTrcek team | Tuned and tested by us on our own printers. Start here if your printer is listed. |
-| [`community/`](community/) | 3DTrcek users | Shared by customers for printers we don't run ourselves. Tested by the person who submitted it — check the notes in each folder. |
+### 👉 **[Open the profile catalog](CATALOG.md)**
 
-**Got a printer we don't cover? Share your profile** — see [How to contribute](#how-to-contribute). Every profile you add helps the next person print right the first time.
+The catalog lists every profile by printer, with material, nozzle and slicer — press <kbd>Ctrl</kbd>+<kbd>F</kbd> and type your printer. It updates automatically whenever a profile is added.
 
----
+- ⭐ **Official** profiles are tuned and tested by the 3DTrcek team.
+- Other profiles are shared by users and tested by the person who submitted them.
 
-## Official profiles
-
-| Printer | Slicer | Folder |
-|---|---|---|
-| Bambu Lab H2S | Bambu Studio / OrcaSlicer | [`official/bambu-lab/H2S`](official/bambu-lab/H2S) |
-| Bambu Lab X1 / X1C / P1S / P1P | Bambu Studio / OrcaSlicer | [`official/bambu-lab/X1-P1`](official/bambu-lab/X1-P1) |
-
-## Community profiles
-
-Browse [`community/`](community/) by printer brand. Each profile is named so you can see the material, printer, nozzle and who shared it at a glance.
+**Your printer isn't there?** Start from your slicer's generic preset for the same material, use the temperatures from the data sheet on [3dtrcek.com](https://3dtrcek.com) — and once it prints well, [share it](../../issues/new/choose) so the next person doesn't start from zero.
 
 ---
 
 ## How to install a profile
 
 ### Bambu Studio
-1. Download the `.json` file (open it on GitHub → **Download raw file** button).
+1. Download the `.json` file from the [catalog](CATALOG.md) (⬇ link).
 2. In Bambu Studio: **File → Import → Import Configs…** and select the file.
 3. The profile appears in the filament dropdown under **User presets**.
 4. Select it for the AMS slot / external spool you're using.
@@ -50,6 +39,9 @@ These are based on OrcaSlicer — use **File → Import → Import Configs…** 
 ### UltiMaker Cura
 **Preferences → Configure Cura → Profiles → Import** and pick the `.curaprofile` file.
 
+### FlashPrint / Simplify3D / ideaMaker
+Unzip the download if needed and import it through the slicer's filament/material profile import.
+
 ### Download everything at once
 Click the green **Code → Download ZIP** button at the top of this page.
 
@@ -61,12 +53,12 @@ You don't need to know Git. Pick whichever way is easier:
 
 ### Option A — Submission form (easiest)
 1. Go to **[Issues → New issue → Submit a filament profile](../../issues/new/choose)**.
-2. Fill in the form and drag your exported `.json` file into the upload box.
+2. Pick your slicer, printer and material, and drag your exported profile file into the upload box.
 3. We review it and add it to the library, crediting you.
 
 ### Option B — Pull request (for GitHub users)
 1. Fork this repository.
-2. Put your file in the right `community/<brand>/` folder using the [naming rule](CONTRIBUTING.md#file-naming).
+2. Put your file in `profiles/<brand>/<model>/` using the [naming rule](CONTRIBUTING.md#file-naming).
 3. Open a pull request and fill in the checklist.
 
 Full rules: **[CONTRIBUTING.md](CONTRIBUTING.md)**
@@ -80,7 +72,7 @@ Full rules: **[CONTRIBUTING.md](CONTRIBUTING.md)**
 
 ## Disclaimer
 
-Profiles are a starting point. Printers, nozzles, enclosures and room conditions differ — always run a temperature tower and flow test for best results. Community profiles are shared by users and are not tested by 3DTrcek unless marked otherwise.
+Profiles are a starting point. Printers, nozzles, enclosures and room conditions differ — always run a temperature tower and flow test for best results. Profiles shared by users are not tested by 3DTrcek unless marked ⭐ official.
 
 Questions about a material? Every product page on [3dtrcek.com](https://3dtrcek.com) has the technical data sheet, or contact us at info@3dtrcek.com.
 

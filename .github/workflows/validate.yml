@@ -2,10 +2,7 @@ name: Validate profiles
 
 on:
   pull_request:
-    paths: ["official/**", "community/**"]
-  push:
-    branches: [main]
-    paths: ["official/**", "community/**"]
+    paths: ["profiles/**"]
 
 permissions:
   contents: read
@@ -22,23 +19,15 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Check changed profiles (pull request)
-        if: github.event_name == 'pull_request'
+      - name: Check changed profiles
+        env:
+          ASSOC: ${{ github.event.pull_request.author_association }}
         run: |
-          git diff --name-only --diff-filter=AMR origin/${{ github.base_ref }}...HEAD \
-            -- official community > changed.txt
+          git diff --name-only --diff-filter=AMR origin/${{ github.base_ref }}...HEAD -- profiles > changed.txt
           cat changed.txt
-          if [ -s changed.txt ]; then
-            # PRs from outside the team may only touch community/
-            if [ "${{ github.event.pull_request.author_association }}" = "OWNER" ] || \
-               [ "${{ github.event.pull_request.author_association }}" = "MEMBER" ] || \
-               [ "${{ github.event.pull_request.author_association }}" = "COLLABORATOR" ]; then
-              xargs -a changed.txt python scripts/validate_profiles.py
-            else
-              xargs -a changed.txt python scripts/validate_profiles.py --community-only
-            fi
-          fi
-
-      - name: Check all profiles (main)
-        if: github.event_name == 'push'
-        run: python scripts/validate_profiles.py
+          [ -s changed.txt ] || exit 0
+          case "$ASSOC" in
+            OWNER|MEMBER|COLLABORATOR) FLAG="" ;;
+            *) FLAG="--external" ;;
+          esac
+          xargs -a changed.txt python scripts/profiles.py validate $FLAG
