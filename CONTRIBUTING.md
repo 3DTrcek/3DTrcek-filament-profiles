@@ -12,8 +12,8 @@ Thanks for helping grow the library! A good profile saves other people hours of 
 
 | Slicer | File name token | File |
 |---|---|---|
-| Bambu Studio | `BambuStudio` | `.json` |
-| OrcaSlicer | `OrcaSlicer` | `.json` |
+| Bambu Studio | `BambuStudio` | `.bbsflmt` (preset bundle) or `.json` |
+| OrcaSlicer | `OrcaSlicer` | `.orca_filament` (preset bundle) or `.json` |
 | Creality Print | `CrealityPrint` | `.json` |
 | QIDI Studio | `QIDIStudio` | `.json` |
 | ElegooSlicer | `ElegooSlicer` | `.json` |
@@ -59,9 +59,20 @@ profiles/voron/2.4/3DTrcek_ASA-CF_2.4_0.6-HF-HS_OrcaSlicer_by-anna.json
 - `by-3DTrcek` is reserved for official profiles.
 - Inside the slicer, give the preset the same name (without the extension) so people recognise it after import.
 
+## For the 3DTrcek team: quick upload
+
+Official profiles can be dropped in exactly as the slicer exports them – no renaming – inside a slicer subfolder:
+
+```
+profiles/bambu-lab/X1-P1/bambu-studio/3DTrcek PETG Matte.bbsflmt
+profiles/bambu-lab/X1-P1/orcaslicer/3DTrcek PETG Matte.orca_filament
+```
+
+Material, nozzle and covered printers are read from the file. Allowed subfolder names: `bambu-studio`, `orcaslicer`, `prusaslicer`, `superslicer`, `cura`, `creality-print`, `qidi-studio`, `elegooslicer`, `anycubic-slicer-next`, `flashprint`, `simplify3d`, `ideamaker`. (Pull requests from outside contributors must use the full naming rule above.)
+
 ## Automatic checks
 
-Every pull request is checked for file type, file name, folder and (for `.json`) valid content. If something's off, the PR page tells you what to fix. After merging, the [catalog](CATALOG.md) updates itself.
+Every pull request is checked for file type, file name, folder, valid content and safety (no post-processing scripts, no dangerous G-code – see [Safety](README.md#%EF%B8%8F-safety)). If something's off, the PR page tells you what to fix. After merging, the [catalog](CATALOG.md) updates itself.
 
 ## Review
 

@@ -29,6 +29,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import profiles as lib  # noqa: E402
+import safety  # noqa: E402
 
 ROOT = lib.ROOT
 MAX_DOWNLOAD = 5 * 1024 * 1024
@@ -212,6 +213,7 @@ def build(event: dict, local_file: Path | None, workdir: Path) -> dict:
     target.write_bytes(src.read_bytes())
 
     _, errors, warnings = lib.parse(target)
+    _, _, gcode = safety.scan_file(target, target.name)
     if errors:
         target.unlink()
         raise IntakeError("The file didn't pass the checks:\n" + "\n".join(f"- {e}" for e in errors))
@@ -220,7 +222,7 @@ def build(event: dict, local_file: Path | None, workdir: Path) -> dict:
         "number": issue["number"], "login": login, "user_id": issue["user"]["id"],
         "path": target.relative_to(ROOT).as_posix(), "material": material.replace("-", " "),
         "printer": f"{brand.replace('-', ' ').title()} {model.replace('-', ' ')}",
-        "slicer": lib.SLICERS[slicer][0], "nozzle": nozzle, "warnings": warnings,
+        "slicer": lib.SLICERS[slicer][0], "nozzle": nozzle, "warnings": warnings, "gcode": gcode,
     }
 
 
@@ -243,6 +245,11 @@ def publish(r: dict) -> None:
        f"Co-authored-by: {r['login']} <{r['user_id']}+{r['login']}@users.noreply.github.com>")
     sh("git", "push", "--force", "origin", branch)
     warn = ("\n\n**Warnings:**\n" + "\n".join(f"- {w}" for w in r["warnings"])) if r["warnings"] else ""
+    if r["gcode"]:
+        warn += ("\n\n**⚠️ Custom G-code in this profile – read it before merging:**\n```gcode\n"
+                 + "\n".join(r["gcode"][:200]) + "\n```")
+    else:
+        warn += "\n\n✅ Safety scan: no custom G-code, no post-processing scripts."
     body = (f"Profile submitted by @{r['login']} in #{r['number']}.\n\n"
             f"| | |\n|---|---|\n| Material | {r['material']} |\n| Printer | {r['printer']} |\n"
             f"| Nozzle | {r['nozzle']} |\n| Slicer | {r['slicer']} |\n| File | `{r['path']}` |"

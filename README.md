@@ -18,13 +18,13 @@ The catalog lists every profile by printer, with material, nozzle and slicer —
 ## How to install a profile
 
 ### Bambu Studio
-1. Download the `.json` file from the [catalog](CATALOG.md) (⬇ link).
+1. Download the `.bbsflmt` (preset bundle) or `.json` file from the [catalog](CATALOG.md) (⬇ link).
 2. In Bambu Studio: **File → Import → Import Configs…** and select the file.
 3. The profile appears in the filament dropdown under **User presets**.
 4. Select it for the AMS slot / external spool you're using.
 
 ### OrcaSlicer
-1. Download the `.json` file.
+1. Download the `.orca_filament` (preset bundle) or `.json` file.
 2. **File → Import → Import Configs…**
 3. Pick it in the filament list. If it doesn't show, click the gear next to the filament list and make sure the profile is enabled for your printer.
 
@@ -69,6 +69,16 @@ Full rules: **[CONTRIBUTING.md](CONTRIBUTING.md)**
 - **UltiMaker Cura:** **Preferences → Configure Cura → Profiles** → select your profile → **Export**.
 
 ---
+
+## 🛡️ Safety
+
+Slicer profiles are plain settings files, but two things inside them could be misused, so every file is scanned automatically before it can be added:
+
+- **No programs.** Profiles that would run a post-processing script or program on your computer are rejected. Files must be plain text (or a slicer bundle of plain-text files) – no executables, no binaries.
+- **No dangerous G-code.** Commands that could damage a printer or change its stored settings – firmware updates, factory resets, writing to EEPROM, disabling endstops, changing Z offset or steps/mm, temperatures above safe limits – are blocked. Any other unusual custom G-code is shown to a 3DTrcek maintainer, who reads it before approving.
+- **Human review.** Nothing is added without a 3DTrcek team member approving it.
+
+Found something suspicious? [Open an issue](../../issues/new) or email info@3dtrcek.com.
 
 ## Disclaimer
 
