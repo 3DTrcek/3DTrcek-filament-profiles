@@ -22,9 +22,10 @@ Thanks for helping grow the library! A good profile saves other people hours of 
 | SuperSlicer | `SuperSlicer` | `.ini` |
 | UltiMaker Cura | `Cura` | `.curaprofile` |
 | Simplify3D | `Simplify3D` | `.fff` |
-| FlashPrint | `FlashPrint` | `.zip` / `.cfg` |
-| ideaMaker | `ideaMaker` | `.zip` / `.data` / `.bin` |
-| anything else | `Other` | `.zip` |
+
+Using FlashPrint, ideaMaker or another slicer? Submit through the [form](../../issues/new/choose) – a maintainer checks the format and adds it by hand.
+
+Plain `.zip` files are never stored in the library. If GitHub won't let you attach your file, zip it for the upload – we unpack it and keep only the profile.
 
 ## Where to put it
 
@@ -68,7 +69,7 @@ profiles/bambu-lab/X1-P1/bambu-studio/3DTrcek PETG Matte.bbsflmt
 profiles/bambu-lab/X1-P1/orcaslicer/3DTrcek PETG Matte.orca_filament
 ```
 
-Material, nozzle and covered printers are read from the file. Allowed subfolder names: `bambu-studio`, `orcaslicer`, `prusaslicer`, `superslicer`, `cura`, `creality-print`, `qidi-studio`, `elegooslicer`, `anycubic-slicer-next`, `flashprint`, `simplify3d`, `ideamaker`. (Pull requests from outside contributors must use the full naming rule above.)
+Material, nozzle and covered printers are read from the file. Allowed subfolder names: `bambu-studio`, `orcaslicer`, `prusaslicer`, `superslicer`, `cura`, `creality-print`, `qidi-studio`, `elegooslicer`, `anycubic-slicer-next`, `simplify3d`. (Pull requests from outside contributors must use the full naming rule above.)
 
 ## Automatic checks
 

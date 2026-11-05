@@ -43,10 +43,8 @@ SLICERS: dict[str, tuple[str, set[str]]] = {
     "SuperSlicer":        ("SuperSlicer",          {".ini"}),
     "Cura":               ("UltiMaker Cura",       {".curaprofile"}),
     "Simplify3D":         ("Simplify3D",           {".fff"}),
-    "FlashPrint":         ("FlashPrint",           {".zip", ".cfg"}),
-    "ideaMaker":          ("ideaMaker",            {".zip", ".data", ".bin"}),
-    "Other":              ("Other",                {".zip", ".json", ".ini", ".cfg"}),
 }
+# FlashPrint, ideaMaker and other slicers are reviewed by hand until we know their exact export format.
 ALL_EXT = set().union(*(e for _, e in SLICERS.values()))
 BUNDLE_EXT = {".bbsflmt", ".orca_filament"}
 # Optional slicer subfolders: profiles/<brand>/<model>/<slicer-folder>/<file>
@@ -55,7 +53,7 @@ SLICER_FOLDERS = {
     "orcaslicer": "OrcaSlicer", "orca-slicer": "OrcaSlicer", "orca": "OrcaSlicer",
     "creality-print": "CrealityPrint", "qidi-studio": "QIDIStudio", "elegooslicer": "ElegooSlicer",
     "anycubic-slicer-next": "AnycubicSlicerNext", "prusaslicer": "PrusaSlicer", "superslicer": "SuperSlicer",
-    "cura": "Cura", "simplify3d": "Simplify3D", "flashprint": "FlashPrint", "ideamaker": "ideaMaker",
+    "cura": "Cura", "simplify3d": "Simplify3D",
 }
 IGNORED = {".gitkeep", "README.md"}
 

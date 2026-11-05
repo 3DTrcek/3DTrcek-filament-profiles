@@ -22,7 +22,7 @@ from pathlib import Path
 
 MAX_MEMBER = 2 * 1024 * 1024
 MAX_MEMBERS = 50
-TEXT_MEMBER_EXT = {".json", ".ini", ".cfg", ".fff", ".txt", ".xml", ".data", ""}
+TEXT_MEMBER_EXT = {".json", ".ini", ".cfg", ".fff", ".txt", ".xml", ""}  # "" = Cura profile parts
 
 NOZZLE_MAX = 320   # °C
 BED_MAX = 130      # °C

@@ -35,6 +35,7 @@ import profiles as lib  # noqa: E402
 TRUSTED = {"OWNER", "MEMBER", "COLLABORATOR"}
 MAX_DOWNLOAD = 10 * 1024 * 1024
 IMAGE_EXT = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".mp4", ".mov"}
+# .zip is allowed only as a wrapper for upload – the library itself never stores plain zips.
 ALLOWED_EXT = lib.ALL_EXT | {".zip", ".txt", ".log", ".3mf"} | IMAGE_EXT
 ALLOWED_HOSTS = {
     "github.com", "raw.githubusercontent.com", "user-images.githubusercontent.com",

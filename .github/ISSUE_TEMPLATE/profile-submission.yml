@@ -34,7 +34,7 @@ body:
 
         <details><summary><b>Other slicers</b></summary>
 
-        Export the material/filament profile however your slicer allows, put it in a `.zip` and attach it.
+        Export the material/filament profile however your slicer allows and attach it (zip it if GitHub refuses the file). A maintainer checks the format and adds it by hand.
         </details>
 
         **2. Fill in the form and drag the file into the box at the bottom.**

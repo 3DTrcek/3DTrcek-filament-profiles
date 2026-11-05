@@ -44,9 +44,7 @@ SLICER_TOKENS = {
     "ElegooSlicer": "ElegooSlicer",
     "Anycubic Slicer Next": "AnycubicSlicerNext",
     "SuperSlicer": "SuperSlicer",
-    "FlashPrint": "FlashPrint",
     "Simplify3D": "Simplify3D",
-    "ideaMaker": "ideaMaker",
 }
 BRAND_SLUGS = {
     "Bambu Lab": "bambu-lab", "Prusa": "prusa", "Creality": "creality", "Elegoo": "elegoo",
@@ -183,7 +181,10 @@ def build(event: dict, local_file: Path | None, workdir: Path) -> dict:
         return v
 
     slicer_choice = need("Slicer")
-    slicer = SLICER_TOKENS.get(slicer_choice, "Other")
+    slicer = SLICER_TOKENS.get(slicer_choice)
+    if not slicer:
+        raise IntakeError(f"Profiles for '{slicer_choice}' are added by hand for now – a maintainer will "
+                          "check the file format and add it manually.")
     allowed = lib.SLICERS[slicer][1]
     brand, model = printer_location(need("Printer brand"), need("Printer model"))
     material = material_name(need("Material type"), need("3DTrcek product name"))

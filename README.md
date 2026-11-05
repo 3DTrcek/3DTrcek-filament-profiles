@@ -39,8 +39,8 @@ These are based on OrcaSlicer — use **File → Import → Import Configs…** 
 ### UltiMaker Cura
 **Preferences → Configure Cura → Profiles → Import** and pick the `.curaprofile` file.
 
-### FlashPrint / Simplify3D / ideaMaker
-Unzip the download if needed and import it through the slicer's filament/material profile import.
+### Simplify3D
+Import the `.fff` file through the slicer's profile import.
 
 ### Download everything at once
 Click the green **Code → Download ZIP** button at the top of this page.
