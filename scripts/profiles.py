@@ -204,7 +204,7 @@ def cmd_catalog(_args: list[str]) -> int:
                       "| Material | Nozzle | Slicer | By | Download |",
                       "|---|---|---|---|---|"]
             for p in (p for p in profiles if p.brand == brand and p.model == model):
-                by = "⭐ 3DTrcek" if p.official else p.author
+                by = "⭐ 3DTrcek" if p.official else p.author.replace("-", " ")
                 lines.append(f"| {p.material.replace('-', ' ')} | {p.nozzle} | {p.slicer_name} | {by} | "
                              f"[⬇ {Path(p.path).suffix}]({p.url}) |")
             lines.append("")

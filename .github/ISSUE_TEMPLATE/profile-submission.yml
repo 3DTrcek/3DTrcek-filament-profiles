@@ -6,8 +6,38 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for sharing! It takes about two minutes.
-        **Export your filament preset** from the slicer (see the [guide](https://github.com/3DTrcek/3DTrcek-filament-profiles#how-to-export-your-profile)) and drag the file into the box at the bottom.
+        Thanks for sharing! It takes about two minutes, and **you don't need to rename anything** – we do that for you.
+
+        **1. Export your filament preset**
+
+        <details><summary><b>Bambu Studio · OrcaSlicer · Creality Print · QIDI Studio · ElegooSlicer · Anycubic Slicer Next</b></summary>
+
+        1. Select your 3DTrcek filament preset in the filament list.
+        2. **File → Export → Export Configs…**
+        3. Tick **only your filament preset** and click **Confirm**.
+        4. Save the `.json` file (or the `.zip` the slicer creates – both are fine).
+        </details>
+
+        <details><summary><b>PrusaSlicer · SuperSlicer</b></summary>
+
+        1. Select your filament preset in the **Filament** tab.
+        2. **File → Export → Export Config…**
+        3. Save the `.ini` file.
+        </details>
+
+        <details><summary><b>UltiMaker Cura</b></summary>
+
+        1. **Preferences → Configure Cura → Profiles**
+        2. Select your profile and click **Export**.
+        3. Save the `.curaprofile` file.
+        </details>
+
+        <details><summary><b>Other slicers</b></summary>
+
+        Export the material/filament profile however your slicer allows, put it in a `.zip` and attach it.
+        </details>
+
+        **2. Fill in the form and drag the file into the box at the bottom.**
 
   - type: dropdown
     id: slicer
